@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Popup>
+	<Connected>connected</Connected>
+	<Disconnected>Joystick disconnected</Disconnected>
+	<Playstation>Playstation joystick</Playstation>
+	<NES>Nes joystick</NES>
+	<SNES>Snes joystick</SNES>
+	<XBox>Xbox joystick</XBox>
+	<Unknown>Unknown joystick</Unknown>
+</Popup>

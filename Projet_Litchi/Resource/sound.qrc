@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/QSound">
+        <file alias="tick">Sounds/tick.wav</file>
+        <file alias="groovy">Sounds/groovy.wav</file>
+    </qresource>
+</RCC>

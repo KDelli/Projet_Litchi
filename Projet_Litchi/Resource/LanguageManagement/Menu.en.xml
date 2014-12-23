@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Menu>
+	<Option>Option</Option>
+	<Video>Video</Video>
+	<Internet>Internet</Internet>
+	<Music>Music</Music>
+	<Game>Game</Game>
+	<Shutdown>Shutdown</Shutdown>
+	<Disconnect>Disconnect</Disconnect>
+	<White>White</White>
+	<Black>Black</Black>
+	<Red>Red</Red>
+	<Green>Green</Green>
+	<Blue>Blue</Blue>
+	<Pink>Pink</Pink>
+	<Yellow>Yellow</Yellow>
+	<Orange>Orange</Orange>
+	<Purple>Purple</Purple>
+	<Brown>Brown</Brown>
+	<Gray>Gray</Gray>
+	<Presetted>Presetted</Presetted>
+</Menu>

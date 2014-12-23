@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Option>
+	<Option>Settings</Option>
+	<CreateNewUser>New user</CreateNewUser>
+	<CustomLitchi>Customize Litchi</CustomLitchi>
+	<Avatar>Change Avatar</Avatar>
+	<Wallpaper>Wallpaper : </Wallpaper>
+	<Icons>Icons : </Icons>
+	<Predefined>Predefined : </Predefined>
+	<Red>Red : </Red>
+	<Green>Green : </Green>
+	<Blue>Blue : </Blue>
+	<Return>Return</Return>
+	<ColorSelect>Change the selected color</ColorSelect>
+	<ColorUnselect>Change the original color</ColorUnselect>
+	<Sound>Sound : </Sound>
+	<Language>Change the language</Language>
+	<French>French</French>
+	<English>English</English>
+	<ModifyKeyboard>Change the keyboard</ModifyKeyboard>
+	<KeyboardBackground>Background : </KeyboardBackground>
+	<KeyboardSelectColor>Selected : </KeyboardSelectColor>
+	<KeyboardUnselectColor>Unselected : </KeyboardUnselectColor>
+	<KeyboardType>Type : </KeyboardType>
+	<Enabled>Enabled</Enabled>
+	<Disabled>Disabled</Disabled>
+	<NameOfNewUser>Name : </NameOfNewUser>
+	<ChoosenLanguage>Language : </ChoosenLanguage>
+	<Sex>Sex : </Sex>
+	<Male>Man</Male>
+	<Female>Woman</Female>
+	<Other>Other</Other>
+	<Hair>Hair : </Hair>
+	<Eyes>Eyes : </Eyes>
+	<Mouth>Mouth : </Mouth>
+	<Body>Body : </Body>
+	<Validate>Create the user</Validate>
+</Option>

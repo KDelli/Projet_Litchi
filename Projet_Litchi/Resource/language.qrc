@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/QLanguage">
+        <file alias="EN_Option">LanguageManagement/Option.en.xml</file>
+        <file alias="FR_Option">LanguageManagement/Option.fr.xml</file>
+        <file alias="EN_Menu">LanguageManagement/Menu.en.xml</file>
+        <file alias="FR_Menu">LanguageManagement/Menu.fr.xml</file>
+        <file alias="EN_Popup">LanguageManagement/Popup.en.xml</file>
+        <file alias="FR_Popup">LanguageManagement/Popup.fr.xml</file>
+    </qresource>
+</RCC>

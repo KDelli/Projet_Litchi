@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Popup>
+	<Connected>connectee</Connected>
+	<Disconnected>Manette Deconnectee</Disconnected>
+	<Playstation>Manette Playstation</Playstation>
+	<NES>Manette Nes</NES>
+	<SNES>Manette Snes</SNES>
+	<XBox>Manette Xbox</XBox>
+	<Unknown>Manette inconnu</Unknown>
+</Popup>

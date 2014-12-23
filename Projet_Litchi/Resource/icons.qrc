@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/QPopUp">
+        <file alias="connected">Icons/popup/connected.png</file>
+        <file alias="disconnected">Icons/popup/disconnected.png</file>
+    </qresource>
+    <qresource prefix="/QNavigator">
+        <file alias="home">Icons/Navigator/accueil.png</file>
+        <file alias="refresh">Icons/Navigator/actualiser.png</file>
+        <file alias="go">Icons/Navigator/go.png</file>
+        <file alias="back">Icons/Navigator/precedente.png</file>
+        <file>Icons/Navigator/stop.png</file>
+        <file alias="next">Icons/Navigator/suivante.png</file>
+    </qresource>
+</RCC>

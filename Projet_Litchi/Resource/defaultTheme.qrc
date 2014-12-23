@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/QDefault">
+        <file alias="noPictureWoman">DefaultTheme/DefaultAvatar/avatar.png</file>
+        <file alias="noPictureMan">DefaultTheme/DefaultAvatar/avatar2.png</file>
+        <file alias="noPictureOther">DefaultTheme/DefaultAvatar/avatar3.png</file>
+        <file alias="LitchiChili">DefaultTheme/Wallpapers/Litchi-Chili.jpg</file>
+        <file alias="ChooseYourLitchi">DefaultTheme/Wallpapers/chooseyourlitchi.jpg</file>
+        <file alias="Disconnect">DefaultTheme/Icons/disconnect.png</file>
+        <file alias="Games">DefaultTheme/Icons/games.png</file>
+        <file alias="Internet">DefaultTheme/Icons/internet.png</file>
+        <file alias="Musics">DefaultTheme/Icons/musics.png</file>
+        <file alias="Settings">DefaultTheme/Icons/settings.png</file>
+        <file alias="Shutdown">DefaultTheme/Icons/shutdown.png</file>
+        <file alias="Videos">DefaultTheme/Icons/videos.png</file>
+    </qresource>
+</RCC>

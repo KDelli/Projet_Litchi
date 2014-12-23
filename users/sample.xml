@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Guest>
+    <Name>Guest</Name>
+    <Sex>2</Sex>
+    <Wallpaper>Litchi-Chili.jpg</Wallpaper>
+    <WallpaperPosition>2</WallpaperPosition>
+    <IconTheme>Theme Litchi</IconTheme>
+    <IconPosition>1</IconPosition>
+    <ConsoleMuted>1</ConsoleMuted>
+    <PresettedUnselectColor>1</PresettedUnselectColor>
+    <RedUnselect>0</RedUnselect>
+    <RedUnselect>0</RedUnselect>
+    <GreenUnselect>0</GreenUnselect>
+    <BlueUnselect>0</BlueUnselect>
+    <PresettedSelectColor>2</PresettedSelectColor>
+    <RedSelect>219</RedSelect>
+    <GreenSelect>23</GreenSelect>
+    <BlueSelect>2</BlueSelect>
+    <KeyboardBackground>5</KeyboardBackground>
+    <KeyboardSelect>2</KeyboardSelect>
+    <KeyboardUnselect>1</KeyboardUnselect>
+    <KeyboardTypeSelected>0</KeyboardTypeSelected>
+    <HairChoosen>0</HairChoosen>
+    <EyesChoosen>0</EyesChoosen>
+    <MouthChoosen>0</MouthChoosen>
+    <BodyChoosen>0</BodyChoosen>
+    <Language>0</Language>
+</Guest>
