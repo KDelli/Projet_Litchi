@@ -203,7 +203,7 @@ class ConsoleIHM : public QGraphicsView
     bool keyboardActivated;
     bool videoIsPlaying;
     bool consoleAsBooted;
-    bool gameIsLauncher;
+    bool gameIsLaunched;
 
 
     /*interger or float of the menu*/

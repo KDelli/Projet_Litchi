@@ -31,7 +31,7 @@ ConsoleIHM::ConsoleIHM()
     keyboardActivated = false;
     videoIsPlaying = false;
     consoleAsBooted = false;
-    gameIsLauncher = false;
+    gameIsLaunched = false;
     rotationPosition = 0;
     subMenuPosition = 0;
     iconsNumber = 0;
@@ -1081,7 +1081,12 @@ void ConsoleIHM::joystickConnected()
     if(consoleMode == LoginScreen)
     {
         return;
-    }    
+    }
+    else if ((consoleMode == Gaming) && !gameIsLaunched)
+    {
+        std::vector<JoystickType> joysticksType = joystick->getJoystickConnected();
+        emulatorManagement->configureTheEmulators(this->currentWorkingDirectory, joysticksType);
+    }
 
     notificationPopup = new Popup(joystickType, userSettings->language, true);
         notificationPopup->show();
@@ -1093,6 +1098,11 @@ void ConsoleIHM::joystickDisconnected()
     if(consoleMode == LoginScreen)
     {
         return;
+    }
+    else if ((consoleMode == Gaming) && !gameIsLaunched)
+    {
+        std::vector<JoystickType> joysticksType = joystick->getJoystickConnected();
+        emulatorManagement->configureTheEmulators(this->currentWorkingDirectory, joysticksType);
     }
 
     notificationPopup = new Popup(NULL, userSettings->language, false);
@@ -1635,11 +1645,11 @@ void ConsoleIHM::closeTheSoftware()
     {
         case Gaming:
         {
-            if(gameIsLauncher)
+            if(gameIsLaunched)
             {
                 emulator->close();
                 delete emulator;
-                gameIsLauncher = false;
+                gameIsLaunched = false;
             }
             break;
         }
@@ -1694,7 +1704,7 @@ void ConsoleIHM::runTheEmulator(QString emulatorChoosen, QString romChoosen)
     soundManagement->playTheStartGameSound();
     emulator = new QProcess;
     emulator->start(emulatorChoosen, QStringList() <<  romChoosen);
-    gameIsLauncher = true;
+    gameIsLaunched = true;
     joystick->softwareMod(true);
 }
 
