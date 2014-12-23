@@ -142,6 +142,7 @@ class ConsoleIHM : public QGraphicsView
     QGraphicsPixmapItem* avatarRenderer;
 
     /*Popup*/
+    QGraphicsProxyWidget* popupProxy;
     Popup* notificationPopup;
 
     /*sound*/

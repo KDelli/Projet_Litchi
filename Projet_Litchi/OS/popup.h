@@ -5,6 +5,7 @@
 #include "LanguageManagement/supportedLanguage.h"
 
 #include <QWidget>
+#include <QGraphicsProxyWidget>
 #include <QApplication>
 #include <QGridLayout>
 #include <QLabel>
@@ -13,7 +14,7 @@
 class Popup : public QWidget
 {
     public :
-        explicit Popup(QString joystickType, SupportedLanguage language, const bool connected);
+        explicit Popup(QString joystickType, SupportedLanguage language, QGraphicsProxyWidget* popupProxy, const bool connected);
         ~Popup();
 
     private :
@@ -22,6 +23,8 @@ class Popup : public QWidget
         QLabel constLabel;
         QLabel writableLabel;
         QLabel pict;
+
+        QGraphicsProxyWidget* popupProxy;
 
         QGridLayout layout;
 

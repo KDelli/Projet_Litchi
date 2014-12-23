@@ -130,7 +130,7 @@ ConsoleIHM::ConsoleIHM()
         connect(keyboard, SIGNAL(aNewKeyIsPressed()), this, SLOT(newKeyPressed()));
         connect(keyboard, SIGNAL(hideTheKeyboard()), this, SLOT(hideTheKeyboard()));
         keyboardProxy->setWidget(keyboard);
-        keyboardProxy->setFlag(QGraphicsItem::ItemIsFocusable, true);
+        keyboardProxy->setFlag(QGraphicsItem::ItemIsFocusable);
 
 
     /*Emulator view*/
@@ -176,6 +176,10 @@ ConsoleIHM::ConsoleIHM()
         mainMenuCarousel->addToGroup(internetButton);
         mainMenuCarousel->addToGroup(videoButton);
         mainMenuCarousel->addToGroup(optionButton);
+
+    /*Popup*/
+    popupProxy = new QGraphicsProxyWidget;
+        scene->addItem(popupProxy);
 }
 void ConsoleIHM::showEvent(QShowEvent*)
 {
@@ -322,12 +326,13 @@ void ConsoleIHM::resolutionManagement(const bool popup)
     and the text at the place when their belong
 
     Arg : The boolean said if the function had to manage
-    the IHM for the menu or the sub menus
+    the IHM or the popups
     */
 
     if(popup)
     {
-        notificationPopup->move(wWidth*0.75, wHeight*0.10);
+        popupProxy->setX(wWidth*0.75);
+        popupProxy->setY(wHeight*0.05);
         return;
     }
 
@@ -469,12 +474,12 @@ void ConsoleIHM::scallingManagement()
     mainMenuCarousel->setTransform(QTransform().translate(0, 0).scale(widthScalling, heightScalling).translate(0, 0));
     text->setTransform(QTransform().translate(0, 0).scale(widthScalling, heightScalling).translate(0, 0));
 
-    /*TODO => Fin a way to scale*/
-    //avatarRenderer->scale(2*widthScalling,2*heightScalling);
+    avatarRenderer->setTransform(QTransform().translate(0, 0).scale(2*widthScalling, 2*heightScalling).translate(0, 0));
 
-    //dirProxy->scale(widthScalling,heightScalling);
-    //emulatorsProxy->scale(widthScalling,heightScalling);
-    //keyboardProxy->scale(widthScalling,heightScalling);
+    dirProxy->setTransform(QTransform().translate(0, 0).scale(widthScalling, heightScalling).translate(0, 0));
+    emulatorsProxy->setTransform(QTransform().translate(0, 0).scale(widthScalling, heightScalling).translate(0, 0));
+    keyboardProxy->setTransform(QTransform().translate(0, 0).scale(widthScalling, heightScalling).translate(0, 0));
+    popupProxy->setTransform(QTransform().translate(0, 0).scale(1.25*widthScalling, 1.25*heightScalling).translate(0, 0));
 }
 void ConsoleIHM::subFolderAnimation(const MenuAction action)
 {
@@ -1088,7 +1093,7 @@ void ConsoleIHM::joystickConnected()
         emulatorManagement->configureTheEmulators(this->currentWorkingDirectory, joysticksType);
     }
 
-    notificationPopup = new Popup(joystickType, userSettings->language, true);
+    notificationPopup = new Popup(joystickType, userSettings->language, popupProxy, true);
         notificationPopup->show();
 
     resolutionManagement(true);
@@ -1105,7 +1110,7 @@ void ConsoleIHM::joystickDisconnected()
         emulatorManagement->configureTheEmulators(this->currentWorkingDirectory, joysticksType);
     }
 
-    notificationPopup = new Popup(NULL, userSettings->language, false);
+    notificationPopup = new Popup(NULL, userSettings->language, popupProxy, false);
         notificationPopup->show();
 
     resolutionManagement(true);
