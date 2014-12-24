@@ -20,7 +20,7 @@ class UserManagement
         virtual ~UserManagement();
 
         void saveUserSettings(QString path, UserSettings* userToSave = nullptr);
-        void createAvatar();
+        void createAvatar(QString path);
         bool createNewUser(QString path, NewUser* newUser);
 
         int getUserSex(QString path, QString name);

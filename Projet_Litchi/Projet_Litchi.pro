@@ -7,18 +7,13 @@ QT       += multimedia
 DEFINES += SFML_STATIC
 #QMAKE_LFLAGS += -static-libgcc
 
-INCLUDEPATH += D:\Dev\SFML-2.2\include
-LIBS += -LD:\Dev\SFML-2.2\lib
+INCLUDEPATH += D:/Dev/SFML-2.2/include
+LIBS += -LD:/Dev/SFML-2.2/lib
 CONFIG(release, debug|release): LIBS += -lsfml-audio -lsfml-graphics -lsfml-main -lsfml-network -lsfml-window -lsfml-system
 CONFIG(debug, debug|release): LIBS += -lsfml-audio-d -lsfml-graphics-d -lsfml-main-d -lsfml-network-d -lsfml-window-d -lsfml-system-d
 
-#INCLUDEPATH += D:\Dev\LibVlc\include
-INCLUDEPATH += D:\Dev\Vlc\include
-#INCLUDEPATH += D:\Dev\LibVlcQt\include
-
-#LIBS += -LD:\Dev\LibVlc\lib
-LIBS += -LD:\Dev\Vlc\lib
-
+INCLUDEPATH += D:/Dev/Vlc/include
+LIBS += -LD:/Dev/Vlc/lib
 LIBS += -llibvlc
 
 QMAKE_CXXFLAGS += '-std=c++11'

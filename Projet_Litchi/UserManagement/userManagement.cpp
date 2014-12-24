@@ -224,18 +224,18 @@ void UserManagement::saveUserSettings(QString path, UserSettings* userToSave)
 
         file.close();
 }
-void UserManagement::createAvatar()
+void UserManagement::createAvatar(QString path)
 {
-    QString path = "Users/" + userSettings->name + "/LogPicture.png";
-    if(QFile(path).exists())
+    QString upath = path + "/../Users/" + userSettings->name + "/LogPicture.png";
+    if(QFile(upath).exists())
     {
-        QFile::remove(path);
+        QFile::remove(upath);
     }
 
-    QImage bodyAvatar("Themes/Avatars/Body" + QString::number(*userSettings->bodyChoosen) + ".png");
-    QImage hairAvatar("Themes/Avatars/Hair" + QString::number(*userSettings->hairChoosen) + ".png");
-    QImage eyesAvatar("Themes/Avatars/Eye" + QString::number(*userSettings->eyesChoosen) + ".png");
-    QImage mouthAvatar("Themes/Avatars/Mouth" + QString::number(*userSettings->mouthChoosen) + ".png");
+    QImage bodyAvatar(path + "/../Themes/Avatars/Body" + QString::number(*userSettings->bodyChoosen) + ".png");
+    QImage hairAvatar(path + "/../Themes/Avatars/Hair" + QString::number(*userSettings->hairChoosen) + ".png");
+    QImage eyesAvatar(path + "/../Themes/Avatars/Eye" + QString::number(*userSettings->eyesChoosen) + ".png");
+    QImage mouthAvatar(path + "/../Themes/Avatars/Mouth" + QString::number(*userSettings->mouthChoosen) + ".png");
 
     QImage results(210, 213, QImage::Format_ARGB32_Premultiplied);
     results.fill(Qt::transparent);
@@ -249,7 +249,7 @@ void UserManagement::createAvatar()
     renderer.drawImage(0, 0, mouthAvatar);
     renderer.end();
 
-    results.save(path);
+    results.save(upath);
 }
 
 

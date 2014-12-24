@@ -907,10 +907,10 @@ void ConsoleIHM::setNewTheme(LoadAction action)
 }
 void ConsoleIHM::displayNewAvatar()
 {
-    QImage bodyAvatar("Themes/Avatars/Body" + QString::number(*userSettings->bodyChoosen) + ".png");
-    QImage hairAvatar("Themes/Avatars/Hair" + QString::number(*userSettings->hairChoosen) + ".png");
-    QImage eyesAvatar("Themes/Avatars/Eye" + QString::number(*userSettings->eyesChoosen) + ".png");
-    QImage mouthAvatar("Themes/Avatars/Mouth" + QString::number(*userSettings->mouthChoosen) + ".png");
+    QImage bodyAvatar(this->currentWorkingDirectory + "/../Themes/Avatars/Body" + QString::number(*userSettings->bodyChoosen) + ".png");
+    QImage hairAvatar(this->currentWorkingDirectory + "/../Themes/Avatars/Hair" + QString::number(*userSettings->hairChoosen) + ".png");
+    QImage eyesAvatar(this->currentWorkingDirectory + "/../Themes/Avatars/Eye" + QString::number(*userSettings->eyesChoosen) + ".png");
+    QImage mouthAvatar(this->currentWorkingDirectory + "/../Themes/Avatars/Mouth" + QString::number(*userSettings->mouthChoosen) + ".png");
 
     QImage results(210, 213, QImage::Format_ARGB32_Premultiplied);
     results.fill(Qt::transparent);
@@ -1391,7 +1391,7 @@ void ConsoleIHM::keyPressEvent(QKeyEvent* event)
 
                                 case ChangeAvatar:
                                 {
-                                    userManagement->createAvatar();
+                                    userManagement->createAvatar(this->currentWorkingDirectory);
                                     QKeyEvent echap(QEvent::KeyPress, Qt::Key_Escape, Qt::NoModifier);
                                     QApplication::sendEvent(this, &echap);
                                     break;
