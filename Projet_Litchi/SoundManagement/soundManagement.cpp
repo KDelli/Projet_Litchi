@@ -3,7 +3,7 @@
 SoundManagement::SoundManagement()
 {
     soundMenu = new QSound(":/QSound/tick");
-    game = new QSound("Themes/Sounds/groovy.wav");
+    game = new QSound(":/QSound/groovy.wav");
 
     mute = false;
 }
