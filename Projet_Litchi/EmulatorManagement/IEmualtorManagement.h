@@ -13,8 +13,8 @@ class IEmulatorManagement
 {
 
     public :
-        virtual void configureEmulator(QString path, std::vector<JoystickType> joysticksType) = 0;
-        virtual void checkRoms(QString path) = 0;
+        virtual void configureEmulator(const QString path, std::vector<JoystickType> joysticksType) = 0;
+        virtual void checkRoms(const QString path) = 0;
 
 };
 

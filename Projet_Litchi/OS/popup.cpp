@@ -1,6 +1,6 @@
 #include "popup.h"
 
-Popup::Popup(QString joystickType, SupportedLanguage language, QGraphicsProxyWidget* popupProxy ,const bool connected)
+Popup::Popup(const QString joystickType, SupportedLanguage language, QGraphicsProxyWidget* popupProxy ,const bool connected)
 {    
     LanguageManagement translator;
     QFont font("Arial", 11);

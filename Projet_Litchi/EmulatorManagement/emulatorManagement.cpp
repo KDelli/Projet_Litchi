@@ -5,7 +5,7 @@ EmulatorManagement::EmulatorManagement()
     composite = new EmulatorComposite;
 }
 
-void EmulatorManagement::checkEmulatorInstalled(QString path)
+void EmulatorManagement::checkEmulatorInstalled(const QString path)
 {
     QDir dir(path + "/../Emulators");
     QStringList emulator = dir.entryList();
@@ -26,17 +26,17 @@ void EmulatorManagement::checkEmulatorInstalled(QString path)
     }
 }
 
-void EmulatorManagement::configureTheEmulators(QString path, std::vector<JoystickType> joysticksType)
+void EmulatorManagement::configureTheEmulators(const QString path, std::vector<JoystickType> joysticksType)
 {
     composite->configureEmulator(path, joysticksType);
 }
 
-void EmulatorManagement::checkTheRoms(QString path)
+void EmulatorManagement::checkTheRoms(const QString path)
 {
     composite->checkRoms(path);
 }
 
-QString EmulatorManagement::getTheEmulatorChoosen(QString emulatorChoosen)
+QString EmulatorManagement::getTheEmulatorChoosen(const QString emulatorChoosen)
 {
     if(emulatorChoosen.compare("Nes") == 0)
     {

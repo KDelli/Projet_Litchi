@@ -8,7 +8,7 @@ class HorizontalCarousel : public AbstractCarousel//, public QObject, public QGr
     Q_OBJECT
 
  public:
-    HorizontalCarousel(int duration, double ellipseSemiMajorAxis = 550, double ellipseSemiMinorAxis = 50, int ellipseAngle = 1);
+    HorizontalCarousel(const int duration, const double ellipseSemiMajorAxis = 550, const double ellipseSemiMinorAxis = 50, const int ellipseAngle = 1);
     virtual ~HorizontalCarousel();
 
  public slots:

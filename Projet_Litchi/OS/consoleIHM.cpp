@@ -460,7 +460,7 @@ void ConsoleIHM::scallingManagement()
         return;
     }
 
-    /*If we are not in a 16:9 shape, there'll be some disformation
+    /*If we are not in a 16:9 shape, there'll be some deformation
     So we had to revert it*/
     qreal ratio = wWidth/wHeight;
     if(ratio <= 1.75 || ratio >= 1.8)
@@ -926,7 +926,7 @@ void ConsoleIHM::displayNewAvatar()
 
     avatarRenderer->setPixmap(QPixmap::fromImage(results));
 }
-void ConsoleIHM::getThemePosition(QString wallpaper, QString icon)
+void ConsoleIHM::getThemePosition(const QString wallpaper, const QString icon)
 {
     QString wallpaperToFound = wallpaper == "" ? userSettings->wallpaperChoosen : wallpaper;
     int i;
@@ -1028,7 +1028,7 @@ void ConsoleIHM::setLanguage(SupportedLanguage language)
 
     text->setPlainText(listOfName[rotationPosition]);
 }
-void ConsoleIHM::getFilesInFolder(QString path)
+void ConsoleIHM::getFilesInFolder(const QString path)
 {
     switch(consoleMode)
     {
@@ -1093,10 +1093,7 @@ void ConsoleIHM::joystickConnected()
         emulatorManagement->configureTheEmulators(this->currentWorkingDirectory, joysticksType);
     }
 
-    notificationPopup = new Popup(joystickType, userSettings->language, popupProxy, true);
-        notificationPopup->show();
-
-    resolutionManagement(true);
+    startNotification(joystickType, userSettings->language, true);
 }
 void ConsoleIHM::joystickDisconnected()
 {    
@@ -1110,10 +1107,7 @@ void ConsoleIHM::joystickDisconnected()
         emulatorManagement->configureTheEmulators(this->currentWorkingDirectory, joysticksType);
     }
 
-    notificationPopup = new Popup(NULL, userSettings->language, popupProxy, false);
-        notificationPopup->show();
-
-    resolutionManagement(true);
+    startNotification(NULL, userSettings->language, false);
 }
 
 /*Functions for animations or actions on event*/
@@ -1557,7 +1551,11 @@ void ConsoleIHM::keyPressEvent(QKeyEvent* event)
 
                 case Qt::Key_Backspace:
                 {
-                    QString videoChoosen = this->currentWorkingDirectory + "/../Videos/" + dirIndex->index(positionInDirView,0).data(Qt::DisplayRole).toString();
+                    /*VLC have hard time with long path*/
+                    QDir dir(this->currentWorkingDirectory);
+                        dir.cdUp();
+
+                    QString videoChoosen = dir.absolutePath() + "/Videos/" + dirIndex->index(positionInDirView,0).data(Qt::DisplayRole).toString();
                     playTheVideo(videoChoosen);
                     break;
                 }
@@ -1704,7 +1702,7 @@ void ConsoleIHM::gameMode(const bool on)
     }
     resolutionManagement();
 }
-void ConsoleIHM::runTheEmulator(QString emulatorChoosen, QString romChoosen)
+void ConsoleIHM::runTheEmulator(const QString emulatorChoosen, const QString romChoosen)
 {
     soundManagement->playTheStartGameSound();
     emulator = new QProcess;
@@ -1726,17 +1724,25 @@ void ConsoleIHM::videoMode(const bool on)
 
         dirView.setCurrentIndex(dirModel.index(positionInDirView));
         scene->addItem(dirProxy);
+
+        playerProxy = new QGraphicsProxyWidget;
+        scene->addItem(playerProxy);
+
     }
     else
     {
         consoleMode = MainMenu;
 
+        playerProxy->setWidget(NULL);
+
         scene->removeItem(dirProxy);
+        scene->removeItem(playerProxy);
+        delete playerProxy;
         setCarousel(true);
     }
     resolutionManagement();
 }
-void ConsoleIHM::playTheVideo(QString path)
+void ConsoleIHM::playTheVideo(const QString path)
 {
     videoIsPlaying = true;
 
@@ -1744,12 +1750,22 @@ void ConsoleIHM::playTheVideo(QString path)
     connect(player, SIGNAL(exitThePlayer()), this, SLOT(closeThePlayer()));
     player->resize(wWidth,wHeight);
     player->playFile(path);
-    player->show();
-    player->move(wHeight/2,wWidth/2);
+    playerProxy->setWidget(player);
+    playerProxy->setX(0);
+    playerProxy->setY(0);
 }
 void ConsoleIHM::closeThePlayer()
 {
     videoIsPlaying = false;
     delete player;
     this->showFullScreen();
+}
+
+/*Function for popup*/
+void ConsoleIHM::startNotification(const QString text, SupportedLanguage language, const bool isAConnexion)
+{
+    notificationPopup = new Popup(text, language, popupProxy, isAConnexion);
+        notificationPopup->show();
+
+    resolutionManagement(true);
 }

@@ -11,8 +11,8 @@ class N64Management : public IEmulatorManagement
     public :
         N64Management();
 
-        void configureEmulator(QString path, std::vector<JoystickType> joysticksType);
-        void checkRoms(QString path);
+        void configureEmulator(const QString path, std::vector<JoystickType> joysticksType);
+        void checkRoms(const QString path);
 };
 
 #endif

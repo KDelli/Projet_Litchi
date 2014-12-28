@@ -4,7 +4,7 @@ LanguageManagement::LanguageManagement()
 {
 }
 
-QString LanguageManagement::getTranslation(QString translationToGet, SupportedLanguage language, QString menuToTranslate)
+QString LanguageManagement::getTranslation(const QString translationToGet, SupportedLanguage language, const QString menuToTranslate)
 {
 	QString path;
 	

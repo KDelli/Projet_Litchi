@@ -2,8 +2,13 @@
 #define PLAYER_H
 
 #include <vlc/vlc.h>
-//#include <QX11EmbedContainer>
+
 #include <QKeyEvent>
+#include <QDir>
+
+#ifdef Q_WS_X11
+#include <QX11EmbedContainer>
+#endif
 
 #if QT_VERSION >= 0x050000
 #include <QtWidgets/QWidget>
@@ -28,7 +33,7 @@ class Player : public QWidget
         ~Player();
 
         void keyPressEvent(QKeyEvent* event);
-        void playFile(QString file);
+        void playFile(const QString file);
         void togglePause();
 
     public slots:

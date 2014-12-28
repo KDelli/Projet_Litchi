@@ -18,42 +18,29 @@
 Player::Player()
 : QWidget()
 {
-    /*preparation of the vlc command*/
-    const char * const vlc_args[] = {
-              "-I", "dummy", /* Don't use any interface */
-              "--ignore-config", /* Don't use VLC's config */
-              "--extraintf=logger", /*log anything*/
-              "--verbose=2", /*be much more verbose then normal for debugging purpose*/
-              "--plugin-path=C:\\vlc-0.9.9-win32\\plugins\\" };
-
 #ifdef Q_WS_X11
     videoWidget=new QX11EmbedContainer(this);
 #else
     videoWidget=new QFrame(this);
 #endif
-    /*[20101215 JG] If KDE is used like unique desktop environment, only use _videoWidget=new QFrame(this);*/
     isPlaying = false;
     inPause = false;
 
-    //QVBoxLayout *layout = new QVBoxLayout;
-        //layout->addWidget(videoWidget);
-
-    //this->setLayout(layout);
     this->setStyleSheet("background-color: black");
 
     poller=new QTimer(this);
         connect(poller, SIGNAL(timeout()), this, SLOT(updateInterface()));
         poller->start(100);
 
-    vlcInstance=libvlc_new(sizeof(vlc_args) / sizeof(vlc_args[0]), vlc_args);  /*tricky calculation of the char space used*/
+    vlcInstance=libvlc_new(0, NULL);
     mediaPlayer = libvlc_media_player_new (vlcInstance);
 
     /*Fullscreen + FramelessWindow to hide bord;*/
-    libvlc_set_fullscreen(mediaPlayer,true);
+    libvlc_set_fullscreen(mediaPlayer, true);
     setWindowFlags(Qt::FramelessWindowHint);
 }
 
-void Player::playFile(QString file)
+void Player::playFile(QString ofile)
 {
     /*the file has to be in one of the following formats /perhaps a little bit outdated)
 
@@ -66,15 +53,17 @@ void Player::playFile(QString file)
     [vcd://][device]               VCD device
     [cdda://][device]              Audio CD device
     udp:[[<source address>]@[<bind address>][:<bind port>]]
-    */
+    */        
+
+    /*Prevent path problems*/
+    QString file = ofile.replace('/','\\');
 
     /* Create a new LibVLC media descriptor */
     media = libvlc_media_new_path(vlcInstance, file.toLatin1());
 
     libvlc_media_player_set_media (mediaPlayer, media);
 
-    int windid = this->winId();//videoWidget->winId();
-    libvlc_media_player_set_xwindow (mediaPlayer, windid);
+    libvlc_media_player_set_xwindow (mediaPlayer, reinterpret_cast<unsigned int>(videoWidget->winId()));
 
     /* Play */
     libvlc_media_player_play (mediaPlayer);
@@ -102,19 +91,6 @@ void Player::togglePause()
 
 void Player::updateInterface()
 {
-    if(!isPlaying)
-    {
-        return;
-    }
-
-    /*It's possible that the vlc doesn't play anything
-    so check before*/
-    libvlc_media_t *curMedia = libvlc_media_player_get_media (mediaPlayer);
-
-    if (curMedia == NULL)
-    {
-        return;
-    }
 }
 
 void Player::keyPressEvent(QKeyEvent* event)

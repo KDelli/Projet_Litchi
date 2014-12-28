@@ -4,8 +4,7 @@
 
 const double pi = 3.14159265;
 
-HorizontalCarousel::HorizontalCarousel(int duration, double ellipseSemiMajorAxis, double ellipseSemiMinorAxis, int ellipseAngle)
-    //: QObject(0), QGraphicsItemGroup(0)
+HorizontalCarousel::HorizontalCarousel(const int duration, const double ellipseSemiMajorAxis, const double ellipseSemiMinorAxis, const int ellipseAngle)
 {
     mAngleAnimator = new variantAnimator;
 

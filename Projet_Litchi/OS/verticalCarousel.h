@@ -8,7 +8,7 @@ class VerticalCarousel : public AbstractCarousel//, public QObject, public QGrap
     Q_OBJECT
 
  public:
-    VerticalCarousel(int duration, double ellipseSemiMajorAxis = 550, double ellipseSemiMinorAxis = 50, int ellipseAngle = 0);
+    VerticalCarousel(const int duration, const double ellipseSemiMajorAxis = 550, const double ellipseSemiMinorAxis = 50, const int ellipseAngle = 0);
     virtual ~VerticalCarousel();
 
  public slots:

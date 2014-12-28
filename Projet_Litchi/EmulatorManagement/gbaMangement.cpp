@@ -4,12 +4,12 @@ GBAMangement::GBAMangement()
 {
 }
 
-void GBAMangement::configureEmulator(QString, std::vector<JoystickType>)
+void GBAMangement::configureEmulator(const QString, std::vector<JoystickType>)
 {
 
 }
 
-void GBAMangement::checkRoms(QString)
+void GBAMangement::checkRoms(const QString)
 {
 
 }

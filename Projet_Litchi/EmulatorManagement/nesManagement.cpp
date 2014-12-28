@@ -4,7 +4,7 @@ NesManagement::NesManagement()
 {
 }
 
-void NesManagement::configureEmulator(QString path, std::vector<JoystickType> joysticksType)
+void NesManagement::configureEmulator(const QString path, std::vector<JoystickType> joysticksType)
 {
     /*if you want to make fceux full screen, you need to change
     a line in the cfg.*/
@@ -89,7 +89,7 @@ void NesManagement::configureEmulator(QString path, std::vector<JoystickType> jo
 
 }
 
-void NesManagement::checkRoms(QString)
+void NesManagement::checkRoms(const QString)
 {
 }
 

@@ -19,7 +19,7 @@ void EmulatorComposite::configureEmulator(QString path, std::vector<JoystickType
     }
 }
 
-void EmulatorComposite::checkRoms(QString path)
+void EmulatorComposite::checkRoms(const QString path)
 {
     unsigned int i;
 

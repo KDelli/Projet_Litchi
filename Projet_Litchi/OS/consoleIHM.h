@@ -52,31 +52,43 @@ class ConsoleIHM : public QGraphicsView
 
 
     private :
-        void onConnect();
-        void keyPressEvent(QKeyEvent* event);
+        /*Functions for graphicals actions*/
         void showEvent(QShowEvent*);
-        void subFolderTextColorManagement();
-        void subFolderAnimation(const MenuAction action);
-        void resolutionManagement(const bool popup = false);
-        void colorManagement();
+        void onConnect();
         void setCarousel(const bool on);
         void setLogScreen(const bool on);
-        void doAnim();
-        void gameMode(const bool on);
-        void videoMode(const bool on);
-        void runTheEmulator(QString emulatorChoosen, QString romChoosen);
-        void getAllTheThemes();
-        void setNewTheme(LoadAction action);
-        void getThemePosition(QString wallpaper = "", QString icon = "");
-        void loadUserTheme();
-        void setLanguage(SupportedLanguage language);
-        void activateKeyboard(const bool on);
+        void resolutionManagement(const bool popup = false);
+        void scallingManagement();
+        void subFolderTextColorManagement();
+        void subFolderAnimation(const MenuAction action);
+        void colorManagement();
         void getRGB(int& preset, int& red, int& green, int& blue);
         QString getRGB(int& preset);
-        void getFilesInFolder(QString path);
-        void playTheVideo(QString path);
-        void scallingManagement();
+
+        /*Personalisation*/
+        void getAllTheThemes();
+        void setNewTheme(LoadAction action);
         void displayNewAvatar();
+        void getThemePosition(const QString wallpaper = "", const QString icon = "");
+        void loadUserTheme();
+        void setLanguage(SupportedLanguage language);
+        void getFilesInFolder(const QString path);
+
+        /*Functions for animations or actions on event*/
+        void keyPressEvent(QKeyEvent* event);
+        void activateKeyboard(const bool on);
+        void doAnim();
+
+        /*Functions for the emulators*/
+        void gameMode(const bool on);
+        void runTheEmulator(const QString emulatorChoosen, const QString romChoosen);
+
+        /*Function for the video*/
+        void videoMode(const bool on);
+        void playTheVideo(const QString path);
+
+        /*Function for popup*/
+        void startNotification(const QString text, SupportedLanguage language, const bool connexion);
 
 
     private slots :
@@ -140,6 +152,9 @@ class ConsoleIHM : public QGraphicsView
 
     /*Avatar*/
     QGraphicsPixmapItem* avatarRenderer;
+
+    /*Video*/
+    QGraphicsProxyWidget* playerProxy;
 
     /*Popup*/
     QGraphicsProxyWidget* popupProxy;

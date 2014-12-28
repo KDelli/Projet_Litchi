@@ -14,7 +14,7 @@
 class Popup : public QWidget
 {
     public :
-        explicit Popup(QString joystickType, SupportedLanguage language, QGraphicsProxyWidget* popupProxy, const bool connected);
+        explicit Popup(const QString joystickType, SupportedLanguage language, QGraphicsProxyWidget* popupProxy, const bool connected);
         ~Popup();
 
     private :

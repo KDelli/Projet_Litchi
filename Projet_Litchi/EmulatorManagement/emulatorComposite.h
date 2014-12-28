@@ -13,8 +13,8 @@ class EmulatorComposite : IEmulatorManagement
         EmulatorComposite();
 
         void add(IEmulatorManagement* emulatorManagement);
-        void configureEmulator(QString path, std::vector<JoystickType> joysticksType);
-        void checkRoms(QString path);
+        void configureEmulator(const QString path, std::vector<JoystickType> joysticksType);
+        void checkRoms(const QString path);
 
     protected :
         std::vector <IEmulatorManagement*> children;
